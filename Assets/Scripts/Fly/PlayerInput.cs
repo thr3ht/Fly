@@ -3,10 +3,10 @@ using UnityEngine.Events;
 
 public class PlayerInput : MonoBehaviour
 {
-    private PlayerInputAction _playerInput;
-    
     public event UnityAction OnFlyPressed;
-    
+
+    private PlayerInputAction _playerInput;
+
     private void Awake()
     {
         _playerInput = new PlayerInputAction();

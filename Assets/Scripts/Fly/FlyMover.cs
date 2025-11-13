@@ -34,6 +34,11 @@ public class FlyMover : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, _minRotation, _rotationSpeed * Time.deltaTime);
     }
 
+    private void OnDestroy()
+    {
+        _playerInput.OnFlyPressed -= OnFly;
+    }
+
     public void Reset()
     {
         transform.position = _startPosition;
@@ -47,14 +52,9 @@ public class FlyMover : MonoBehaviour
         {
             return;
         }
-        
+
         _rigidbody.velocity = new Vector2(_speed, 0);
         transform.rotation = _maxRotation;
         _rigidbody.AddForce(Vector2.up * _tapForce, ForceMode2D.Force);
-    }
-
-    private void OnDestroy()
-    {
-        _playerInput.OnFlyPressed -= OnFly;
     }
 }

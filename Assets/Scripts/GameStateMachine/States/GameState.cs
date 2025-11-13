@@ -23,7 +23,7 @@ public class GameState : State
     private void OnEnable()
     {
         Time.timeScale = 1;
-        _barrierGenerator.ResetPool();
+        _barrierGenerator.ResetBarriers();
         _fly.ResetPlayer();
 
         _startScreen.Close();

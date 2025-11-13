@@ -4,7 +4,6 @@ using GoogleMobileAds.Api;
 public class AdManager : MonoBehaviour
 {
     private BannerView _bannerView;
-    
     private string _bannerUnitId = "ca-app-pub-3940256099942544/6300978111";
 
     private void Start()
@@ -13,16 +12,9 @@ public class AdManager : MonoBehaviour
         ShowBanner();
     }
 
-    private void CreateBanner()
+    private void OnDestroy()
     {
-        if (_bannerView != null)
-        {
-            _bannerView.Destroy();
-        }
-        
-        _bannerView = new BannerView(_bannerUnitId, AdSize.Banner, AdPosition.Bottom);
-        
-        _bannerView.LoadAd(new AdRequest());
+        _bannerView?.Destroy();
     }
 
     public void ShowBanner()
@@ -35,8 +27,15 @@ public class AdManager : MonoBehaviour
         _bannerView?.Hide();
     }
 
-    private void OnDestroy()
+    private void CreateBanner()
     {
-        _bannerView?.Destroy();
+        if (_bannerView != null)
+        {
+            _bannerView.Destroy();
+        }
+
+        _bannerView = new BannerView(_bannerUnitId, AdSize.Banner, AdPosition.Bottom);
+
+        _bannerView.LoadAd(new AdRequest());
     }
 }

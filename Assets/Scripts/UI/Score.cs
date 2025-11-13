@@ -23,7 +23,7 @@ public class Score : MonoBehaviour
     {
         _signalBus.Unsubscribe<ScoreChangedSignal>(OnScoreChanged);
     }
-    
+
     private void OnScoreChanged(ScoreChangedSignal signal)
     {
         _score.text = signal.NewScore.ToString();

@@ -6,6 +6,7 @@ public abstract class Screen : MonoBehaviour
 {
     [SerializeField] protected CanvasGroup CanvasGroup;
     [SerializeField] protected Button Button;
+
     [SerializeField] private float _pulseDuration;
     [SerializeField] private float _pulseScale;
 
@@ -24,14 +25,14 @@ public abstract class Screen : MonoBehaviour
         Button.onClick.RemoveListener(OnButtonClick);
     }
 
+    public abstract void Open();
+    public abstract void Close();
+
+    protected abstract void OnButtonClick();
+
     private void ButtonPulsation()
     {
         Button.transform.DOScale(_pulseScale, _pulseDuration).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine)
             .SetUpdate(true);
     }
-
-    protected abstract void OnButtonClick();
-
-    public abstract void Open();
-    public abstract void Close();
 }

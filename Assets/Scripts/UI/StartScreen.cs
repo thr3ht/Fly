@@ -9,11 +9,6 @@ public class StartScreen : Screen
     {
         _signalBus = signalBus;
     }
-    
-    protected override void OnButtonClick()
-    {
-        _signalBus.Fire<PlayButtonClickedSignal>();
-    }
 
     public override void Open()
     {
@@ -25,5 +20,10 @@ public class StartScreen : Screen
     {
         CanvasGroup.alpha = 0;
         Button.interactable = false;
+    }
+
+    protected override void OnButtonClick()
+    {
+        _signalBus.Fire<PlayButtonClickedSignal>();
     }
 }

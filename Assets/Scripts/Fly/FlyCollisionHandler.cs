@@ -1,18 +1,19 @@
 using UnityEngine;
+using Zenject;
 
-[RequireComponent(typeof(Fly))]
 public class FlyCollisionHandler : MonoBehaviour
 {
     private Fly _fly;
 
-    private void Start()
+    [Inject]
+    public void Construct(Fly fly)
     {
-        _fly = GetComponent<Fly>();
+        _fly = fly;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out ScoreZone scoreZone))
+        if (collision.TryGetComponent<ScoreZone>(out _))
         {
             _fly.IncreaseScore();
         }

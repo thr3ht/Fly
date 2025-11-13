@@ -9,11 +9,6 @@ public class GameOverScreen : Screen
     {
         _signalBus = signalBus;
     }
-    
-    protected override void OnButtonClick()
-    {
-        _signalBus.Fire<RestartButtonClickedSignal>();
-    }
 
     public override void Open()
     {
@@ -25,5 +20,10 @@ public class GameOverScreen : Screen
     {
         CanvasGroup.alpha = 0;
         Button.interactable = false;
+    }
+    
+    protected override void OnButtonClick()
+    {
+        _signalBus.Fire<RestartButtonClickedSignal>();
     }
 }

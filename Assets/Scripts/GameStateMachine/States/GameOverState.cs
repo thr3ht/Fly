@@ -3,8 +3,9 @@ using Zenject;
 
 public class GameOverState : State
 {
-    private GameOverScreen _gameOverScreen;
     [SerializeField] private AdManager _adManager;
+    
+    private GameOverScreen _gameOverScreen;
 
     [Inject]
     public void Construct(GameOverScreen gameOverScreen)
